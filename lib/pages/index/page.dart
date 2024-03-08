@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_music/pages/index/controller.dart';
+import 'package:flutter_music/pages/index/widget/bottom_item.dart';
+import 'package:flutter_music/pages/index/widget/index_function.dart';
 import 'package:get/get.dart';
 
 class IndexPage extends GetView<IndexController> {
@@ -7,6 +9,23 @@ class IndexPage extends GetView<IndexController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return indexBg(
+      children: [
+        indexPageView(controller: controller),
+        bottomLayout(
+          items: controller.items,
+          itemBuilder: (item, index) {
+            return BottomItem(
+              item: item,
+              index: index,
+              controller: controller,
+              onTap: () {
+                controller.onItemTap(index);
+              },
+            );
+          },
+        ),
+      ],
+    );
   }
 }

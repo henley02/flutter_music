@@ -187,4 +187,24 @@ class RequestRepository {
       fail: fail,
     );
   }
+
+  refreshLogin({
+    Success<String>? success,
+    Fail? fail,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.refreshLogin,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          success!(data['cookie']);
+        } else {
+          if (fail != null) {
+            fail('');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
 }

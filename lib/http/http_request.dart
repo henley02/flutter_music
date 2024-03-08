@@ -55,12 +55,6 @@ class HttpRequest {
         Toast.show("网络连接失败，请检查网络");
         return;
       }
-      if (connectivityResult == ConnectivityResult.mobile) {
-        print('I am connected to a mobile network.');
-      } else if (connectivityResult == ConnectivityResult.wifi) {
-        print('I am connected to a wifi network.');
-      }
-
       var dio = createInstance(isJson);
       if (baseUrl != null) {
         dio.options.baseUrl = baseUrl;

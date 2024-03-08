@@ -12,6 +12,7 @@ class Routes {
   static const index = '/index';
   static const codeVerify = '/codeVerify';
   static const login = '/login';
+  static const discover = '/discover';
 
   static final routes = <GetPage>[
     GetPage(
