@@ -13,6 +13,10 @@ class Routes {
   static const codeVerify = '/codeVerify';
   static const login = '/login';
   static const discover = '/discover';
+  static const dailySongs = '/dailySongs';
+  static const playList = '/playList';
+  static const playListDetail = '/playListDetail';
+  static const rank = '/rank';
 
   static final routes = <GetPage>[
     GetPage(

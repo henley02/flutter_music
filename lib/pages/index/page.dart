@@ -11,7 +11,10 @@ class IndexPage extends GetView<IndexController> {
   Widget build(BuildContext context) {
     return indexBg(
       children: [
+        ///滚动页面
         indexPageView(controller: controller),
+
+        ///底部导航栏
         bottomLayout(
           items: controller.items,
           itemBuilder: (item, index) {

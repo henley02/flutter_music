@@ -1,5 +1,7 @@
 import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
+import 'package:flutter_music/models/new_song_entity.dart';
+import 'package:flutter_music/models/recommend_play_list_entity.dart';
 import 'package:flutter_music/typedef/function.dart';
 
 class RequestRepository {
@@ -184,6 +186,91 @@ class RequestRepository {
         'order': order,
       },
       success: success,
+      fail: fail,
+    );
+  }
+
+  ///获取轮播图
+  getBanner({
+    Success<List<String>>? success,
+    Fail? fail,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.banner,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          var result = <String>[];
+          data['banners'].forEach((item) {
+            result.add(item['pic']);
+          });
+          if (success != null) {
+            success(result);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取轮播图失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///推荐歌单
+  getRecommendPlayList({
+    Success<List<RecommendPlayListEntity>>? success,
+    Fail? fail,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.recomPlays,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          var result = <RecommendPlayListEntity>[];
+          data['recommend'].forEach((item) {
+            result.add(
+              RecommendPlayListEntity.fromJson(item),
+            );
+          });
+          if (success != null) {
+            success(result);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取推荐歌单失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///推荐新音乐
+  getNewSongs({
+    Fail? fail,
+    Success<List<NewSongEntity>>? success,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.newSong,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          var result = <NewSongEntity>[];
+          data['result'].forEach((item) {
+            result.add(
+              NewSongEntity.fromJson(item),
+            );
+          });
+          if (success != null) {
+            success(result);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取推荐新音乐失败');
+          }
+        }
+      },
       fail: fail,
     );
   }
