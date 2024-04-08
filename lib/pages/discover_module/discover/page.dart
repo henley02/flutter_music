@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/models/recommend_play_list_entity.dart';
-import 'package:flutter_music/pages/discover/controller.dart';
-import 'package:flutter_music/pages/discover/widget/banner.dart';
-import 'package:flutter_music/pages/discover/widget/button_item.dart';
-import 'package:flutter_music/pages/discover/widget/discover_appbar.dart';
-import 'package:flutter_music/pages/discover/widget/discover_function.dart';
-import 'package:flutter_music/pages/discover/widget/recommend_top.dart';
+import 'package:flutter_music/pages/discover_module/discover/controller.dart';
+import 'package:flutter_music/pages/discover_module/discover/widget/banner.dart';
+import 'package:flutter_music/pages/discover_module/discover/widget/button_item.dart';
+import 'package:flutter_music/pages/discover_module/discover/widget/discover_appbar.dart';
+import 'package:flutter_music/pages/discover_module/discover/widget/discover_function.dart';
+import 'package:flutter_music/pages/discover_module/discover/widget/recommend_top.dart';
 import 'package:flutter_music/routes/index.dart';
 import 'package:flutter_music/widgets/box.dart';
 import 'package:flutter_music/widgets/custom_list/build_list.dart';

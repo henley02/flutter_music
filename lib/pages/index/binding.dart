@@ -1,4 +1,4 @@
-import 'package:flutter_music/pages/discover/controller.dart';
+import 'package:flutter_music/pages/discover_module/discover/controller.dart';
 import 'package:flutter_music/pages/event/controller.dart';
 import 'package:flutter_music/pages/index/controller.dart';
 import 'package:flutter_music/pages/mine/controller.dart';

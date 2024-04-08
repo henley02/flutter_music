@@ -1,6 +1,7 @@
 import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
+import 'package:flutter_music/models/play_list_detail_song_entity.dart';
 import 'package:flutter_music/models/recommend_play_list_entity.dart';
 import 'package:flutter_music/typedef/function.dart';
 
@@ -268,6 +269,34 @@ class RequestRepository {
         } else {
           if (fail != null) {
             fail('获取推荐新音乐失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///获取每日推荐歌曲
+  /// [success] 成功回调
+  /// [fail] 失败回调
+  getDailySong({Success<List<PlayListDetailSongEntity>>? success, Fail? fail}) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.dailySongs,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          if (success != null) {
+            var result = <PlayListDetailSongEntity>[];
+            data['data']['dailySongs'].forEach((item) {
+              result.add(
+                PlayListDetailSongEntity.fromJson(item),
+              );
+            });
+            success(result);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取每日推荐歌曲失败');
           }
         }
       },

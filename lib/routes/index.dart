@@ -1,5 +1,7 @@
 import 'package:flutter_music/pages/code_verify/binding.dart';
 import 'package:flutter_music/pages/code_verify/page.dart';
+import 'package:flutter_music/pages/discover_module/daily_song/binding.dart';
+import 'package:flutter_music/pages/discover_module/daily_song/page.dart';
 import 'package:flutter_music/pages/index/binding.dart';
 import 'package:flutter_music/pages/index/page.dart';
 import 'package:flutter_music/pages/login/binding.dart';
@@ -37,6 +39,11 @@ class Routes {
       name: codeVerify,
       page: () => const CodeVerifyPage(),
       binding: CodeVerifyBinding(),
+    ),
+    GetPage(
+      name: dailySongs,
+      page: () => const DailySongsPage(),
+      binding: DailySongsBinding(),
     ),
   ];
 }

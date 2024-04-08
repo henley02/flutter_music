@@ -1,6 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_music/pages/discover/controller.dart';
+import 'package:flutter_music/pages/discover_module/discover/controller.dart';
 import 'package:flutter_music/widgets/border_image.dart';
 import 'package:get/get.dart';
 

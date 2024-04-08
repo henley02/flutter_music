@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/base/base_get_controller.dart';
-import 'package:flutter_music/pages/discover/page.dart';
+import 'package:flutter_music/pages/discover_module/discover/page.dart';
 import 'package:flutter_music/pages/event/page.dart';
 import 'package:flutter_music/pages/mine/page.dart';
 import 'package:flutter_music/pages/setting/page.dart';
