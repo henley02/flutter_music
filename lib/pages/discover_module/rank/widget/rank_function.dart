@@ -12,7 +12,7 @@ Widget rankBg({
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: CustomScrollView(
             slivers: slivers,
           ),
