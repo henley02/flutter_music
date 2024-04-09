@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 Widget buildGrid<T>({
   required List<T> items,
-  int crossAxisCount = 2,
+  int crossAxisCount = 3,
   double crossAxisSpacing = 10,
   double mainAxisSpacing = 10,
   double childAspectRatio = 0.7,

@@ -2,6 +2,8 @@ import 'package:flutter_music/pages/code_verify/binding.dart';
 import 'package:flutter_music/pages/code_verify/page.dart';
 import 'package:flutter_music/pages/discover_module/daily_song/binding.dart';
 import 'package:flutter_music/pages/discover_module/daily_song/page.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/play_list/binding.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/play_list/page.dart';
 import 'package:flutter_music/pages/discover_module/rank/binding.dart';
 import 'package:flutter_music/pages/discover_module/rank/page.dart';
 import 'package:flutter_music/pages/index/binding.dart';
@@ -52,6 +54,11 @@ class Routes {
       name: rank,
       page: () => const RankPage(),
       binding: RankBinding(),
+    ),
+    GetPage(
+      name: playList,
+      page: () => const PlayListPage(),
+      binding: PlayListBinding(),
     ),
   ];
 }

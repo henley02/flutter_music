@@ -2,6 +2,7 @@ import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
 import 'package:flutter_music/models/play_list_detail_song_entity.dart';
+import 'package:flutter_music/models/play_list_entity.dart';
 import 'package:flutter_music/models/rank_entity.dart';
 import 'package:flutter_music/models/recommend_play_list_entity.dart';
 import 'package:flutter_music/typedef/function.dart';
@@ -166,28 +167,44 @@ class RequestRepository {
   }
 
   /// 获取网友精选碟歌单
-  /// [order] 可选值为 'new' 和 'hot', 分别对应最新和最热 , 默认为 'hot'
-  /// [cat] tag, 比如 " 华语 "、" 古风 " 、" 欧美 "、" 流行 ", 默认为 "全部",可从歌单分类接口获取(/playlist/catlist)
-  /// [limit] 取出歌单数量 , 默认为 50
-  /// [offset] 偏移数量 , 用于分页 , 如 :( 评论页数 -1)*50, 其中 50 为 limit 的值
+  ///[cat]歌单分类
+  ///[success]成功回调
+  ///[fail]失败回调
+  ///[limit]每页数量
+  ///[offset]偏移量
+  ///[order]排序方式order: 可选值为 'new' 和 'hot', 分别对应最新和最热 , 默认为 'hot'
   getPlayList({
-    String cat = '华语',
-    int offset = 0,
-    int limit = 10,
+    required String cat,
+    required int offset,
+    int limit = 21,
+    required Success<List<PlayListEntity>> success,
     String order = 'hot',
-    Success? success,
     Fail? fail,
   }) {
     Request.get<Map<String, dynamic>>(
       RequestApi.playlist,
-      isShowLoading: true,
+      isShowLoading: false,
       params: {
         'cat': cat,
         'limit': limit,
         'offset': '${offset * limit}',
         'order': order,
       },
-      success: success,
+      success: (data) {
+        if (data['code'] == 200) {
+          var result = <PlayListEntity>[];
+          data['playlists'].forEach((element) {
+            result.add(
+              PlayListEntity.fromJson(element),
+            );
+          });
+          success(result);
+        } else {
+          if (fail != null) {
+            fail('获取歌单列表失败');
+          }
+        }
+      },
       fail: fail,
     );
   }
@@ -355,6 +372,33 @@ class RequestRepository {
           success(data['data'][0]['url']);
         }
       },
+    );
+  }
+
+  ///获取歌单分类列表
+  getPlayListCatList({
+    required Success<List<String>> success,
+    Fail? fail,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.playlistCatlist,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          var result = <String>[];
+          data['tags'].forEach((element) {
+            result.add(
+              element['name'],
+            );
+          });
+          success(result);
+        } else {
+          if (fail != null) {
+            fail('获取歌单分类列表失败');
+          }
+        }
+      },
+      fail: fail,
     );
   }
 
