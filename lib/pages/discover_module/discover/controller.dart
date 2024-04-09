@@ -1,4 +1,4 @@
-import 'package:flutter_music/base/base_get_controller.dart';
+import 'package:flutter_music/base/controllers/base_get_controller.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
 import 'package:flutter_music/models/recommend_play_list_entity.dart';
 import 'package:flutter_music/res/r.dart';

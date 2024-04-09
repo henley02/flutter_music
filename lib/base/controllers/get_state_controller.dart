@@ -1,4 +1,4 @@
-import 'package:flutter_music/base/base_get_controller.dart';
+import 'package:flutter_music/base/controllers/base_get_controller.dart';
 import 'package:flutter_music/typedef/function.dart';
 import 'package:get/get.dart';
 

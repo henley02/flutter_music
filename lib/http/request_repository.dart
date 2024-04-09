@@ -2,6 +2,7 @@ import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
 import 'package:flutter_music/models/play_list_detail_song_entity.dart';
+import 'package:flutter_music/models/rank_entity.dart';
 import 'package:flutter_music/models/recommend_play_list_entity.dart';
 import 'package:flutter_music/typedef/function.dart';
 
@@ -301,6 +302,59 @@ class RequestRepository {
         }
       },
       fail: fail,
+    );
+  }
+
+  ///获取排行榜
+  getRank({
+    Success<List<RankEntity>>? success,
+    Fail? fail,
+  }) {
+    Request.get<Map<String, dynamic>>(
+      RequestApi.rank,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          if (success != null) {
+            var topList = <RankEntity>[];
+            data['list'].forEach((item) {
+              topList.add(
+                RankEntity.fromJson(item),
+              );
+            });
+            success(topList);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取榜单失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///获取歌曲播放链接
+  ///[id]歌曲id
+  ///[br]码率
+  ///[success]成功
+  ///[fail]失败
+  getSongUrl({
+    required int id,
+    Success<String>? success,
+  }) {
+    var params = {
+      'id': id.toString(),
+    };
+    Request.get<Map<String, dynamic>>(
+      RequestApi.songUrl,
+      params: params,
+      isShowLoading: false,
+      success: (data) {
+        if (success != null) {
+          success(data['data'][0]['url']);
+        }
+      },
     );
   }
 

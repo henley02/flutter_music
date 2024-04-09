@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_music/base/base_get_controller.dart';
+import 'package:flutter_music/base/controllers/base_get_controller.dart';
 import 'package:flutter_music/res/r.dart';
 import 'package:flutter_music/routes/index.dart';
 import 'package:flutter_music/utils/sp_util.dart';
