@@ -4,6 +4,8 @@ import 'package:flutter_music/pages/discover_module/daily_song/binding.dart';
 import 'package:flutter_music/pages/discover_module/daily_song/page.dart';
 import 'package:flutter_music/pages/discover_module/play_list_module/play_list/binding.dart';
 import 'package:flutter_music/pages/discover_module/play_list_module/play_list/page.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/play_list_detail/binding.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/play_list_detail/page.dart';
 import 'package:flutter_music/pages/discover_module/rank/binding.dart';
 import 'package:flutter_music/pages/discover_module/rank/page.dart';
 import 'package:flutter_music/pages/index/binding.dart';
@@ -24,6 +26,8 @@ class Routes {
   static const playListDetail = '/playListDetail';
   static const rank = '/rank';
   static const play = '/play';
+  static const playlistDesc = '/playlistDesc';
+  static const subs = '/subs';
 
   static final routes = <GetPage>[
     GetPage(
@@ -59,6 +63,11 @@ class Routes {
       name: playList,
       page: () => const PlayListPage(),
       binding: PlayListBinding(),
+    ),
+    GetPage(
+      name: playListDetail,
+      page: () => const PlayListDetailPage(),
+      binding: PlayListDetailBinding(),
     ),
   ];
 }

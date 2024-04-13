@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class Inject {
   static void init() {
     Get.put<RequestRepository>(RequestRepository());
-    Get.lazyPut<ThemeController>(() => ThemeController());
+    Get.put<ThemeController>(ThemeController());
     Get.put<PlayMusicController>(PlayMusicController());
   }
 }
