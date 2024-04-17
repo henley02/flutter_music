@@ -30,6 +30,7 @@ class SubsPeople extends StatelessWidget {
               children: [
                 Expanded(
                   child: buildList<CreatorEntity>(
+                    scrollDirection: Axis.horizontal,
                     itemBuilder: (item, index) {
                       return CircleAvatar(
                         radius: 15,

@@ -7,6 +7,8 @@ import 'package:flutter_music/pages/discover_module/play_list_module/play_list/p
 import 'package:flutter_music/pages/discover_module/play_list_module/play_list_desc/page.dart';
 import 'package:flutter_music/pages/discover_module/play_list_module/play_list_detail/binding.dart';
 import 'package:flutter_music/pages/discover_module/play_list_module/play_list_detail/page.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/subscriber/binding.dart';
+import 'package:flutter_music/pages/discover_module/play_list_module/subscriber/page.dart';
 import 'package:flutter_music/pages/discover_module/rank/binding.dart';
 import 'package:flutter_music/pages/discover_module/rank/page.dart';
 import 'package:flutter_music/pages/index/binding.dart';
@@ -75,6 +77,11 @@ class Routes {
       page: () => PlayListDescPage(),
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 600),
+    ),
+    GetPage(
+      name: subs,
+      page: () => const SubscriberPage(),
+      binding: SubscriberBinding(),
     ),
   ];
 }

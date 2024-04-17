@@ -1,5 +1,6 @@
 import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
+import 'package:flutter_music/models/creator_entity.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
 import 'package:flutter_music/models/play_list_detail_entity.dart';
 import 'package:flutter_music/models/play_list_detail_song_entity.dart';
@@ -507,6 +508,49 @@ class RequestRepository {
         } else {
           if (fail != null) {
             fail('获取相关歌单推荐失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///获取歌单收藏者
+  ///[id]
+  ///[limit]单次获取数量
+  ///[offset]偏移量
+  ///[success]成功
+  ///[fail]失败
+  getPlayListSubscribers({
+    required int id,
+    required int offset,
+    int limit = 21,
+    Success<List<CreatorEntity>>? success,
+    Fail? fail,
+  }) {
+    var params = {
+      'id': id.toString(),
+      'limit': limit.toString(),
+      'offset': '${offset * limit}',
+    };
+    Request.get<Map<String, dynamic>>(
+      RequestApi.playlistSubscribers,
+      isShowLoading: false,
+      params: params,
+      success: (data) {
+        if (data['code'] == 200) {
+          if (success != null) {
+            var result = <CreatorEntity>[];
+            data['subscribers'].forEach((element) {
+              result.add(
+                CreatorEntity.fromJson(element),
+              );
+            });
+            success(result);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取歌单收藏者失败');
           }
         }
       },
