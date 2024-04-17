@@ -41,26 +41,26 @@ class PlayListDetailController
       success: (entity) {
         isOfficial = entity.creator.nickname.contains('官方');
         requestRepository.getPlayListDetailSongs(
-            id: id,
-            offset: 0,
-            limit: entity.trackCount,
-            success: (songs) {
-              this.songs.addAll(songs);
-              print('$this.songs');
-              requestRepository.getRelatedPlayList(
-                id: id,
-                success: (related) {
-                  success(
-                    {
-                      'entity': entity,
-                      'songs': songs,
-                      'related': related,
-                    },
-                  );
-                },
-                fail: fail,
-              );
-            });
+          id: id,
+          offset: 0,
+          limit: entity.trackCount,
+          success: (songs) {
+            this.songs.addAll(songs);
+            requestRepository.getRelatedPlayList(
+              id: id,
+              success: (related) {
+                success(
+                  {
+                    'entity': entity,
+                    'songs': songs,
+                    'related': related,
+                  },
+                );
+              },
+              fail: fail,
+            );
+          },
+        );
       },
       fail: fail,
     );

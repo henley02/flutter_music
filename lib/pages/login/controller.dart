@@ -26,6 +26,7 @@ class LoginController extends BaseGetController {
   @override
   void onInit() {
     super.onInit();
+    SpUtil.clearCookie();
     videoPlayerController = VideoPlayerController.asset(R.videos.loginVideo)
       ..initialize().then((_) {
         videoPlayerController.setLooping(true);
