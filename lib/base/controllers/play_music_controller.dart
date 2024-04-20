@@ -165,4 +165,8 @@ class PlayMusicController extends BaseGetController {
     _isSeeking = false;
     _player.seek(Duration(milliseconds: value.toInt()));
   }
+
+  delete(index) {
+    // todo
+  }
 }

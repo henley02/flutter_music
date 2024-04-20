@@ -7,6 +7,7 @@ import 'package:flutter_music/pages/play/widget/play_function_button.dart';
 import 'package:flutter_music/pages/play/widget/play_slider.dart';
 import 'package:flutter_music/pages/play/widget/record.dart';
 import 'package:flutter_music/pages/play/widget/stylus.dart';
+import 'package:flutter_music/widgets/songs_dialog/songs_dialog.dart';
 import 'package:get/get.dart';
 
 class PlayPage extends GetView<PlayController> {
@@ -102,7 +103,7 @@ class PlayPage extends GetView<PlayController> {
 
               ///歌曲列表
               onList: () => Get.bottomSheet(
-                Container(),
+                const SongsDialog(),
               ),
             ),
           ],
