@@ -1,5 +1,6 @@
 import 'package:flutter_music/http/request.dart';
 import 'package:flutter_music/http/request_api.dart';
+import 'package:flutter_music/models/comment_entity.dart';
 import 'package:flutter_music/models/creator_entity.dart';
 import 'package:flutter_music/models/new_song_entity.dart';
 import 'package:flutter_music/models/play_list_detail_entity.dart';
@@ -551,6 +552,47 @@ class RequestRepository {
         } else {
           if (fail != null) {
             fail('获取歌单收藏者失败');
+          }
+        }
+      },
+      fail: fail,
+    );
+  }
+
+  ///获取歌曲评论
+  ///[id]歌曲id
+  ///[limit]单次获取数量
+  ///[offset]偏移量
+  ///[before]分页参数,取上一页最后一项的time获取下一页数据
+  ///[success]成功
+  ///[fail]失败
+  getSongComment({
+    required int id,
+    required int offset,
+    int limit = 20,
+    int? before,
+    Success<CommentEntity>? success,
+    Fail? fail,
+  }) {
+    var params = {
+      'id': id.toString(),
+      'limit': limit.toString(),
+      'offset': '${offset * limit}',
+      'before': before?.toString(),
+    };
+    Request.get<Map<String, dynamic>>(
+      RequestApi.songComment,
+      params: params,
+      isShowLoading: false,
+      success: (data) {
+        if (data['code'] == 200) {
+          if (success != null) {
+            var entity = CommentEntity.fromJson(data);
+            success(entity);
+          }
+        } else {
+          if (fail != null) {
+            fail('获取歌曲评论失败');
           }
         }
       },

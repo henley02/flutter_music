@@ -15,6 +15,8 @@ import 'package:flutter_music/pages/index/binding.dart';
 import 'package:flutter_music/pages/index/page.dart';
 import 'package:flutter_music/pages/login/binding.dart';
 import 'package:flutter_music/pages/login/page.dart';
+import 'package:flutter_music/pages/play/binding.dart';
+import 'package:flutter_music/pages/play/page.dart';
 import 'package:flutter_music/pages/splash/page.dart';
 import 'package:get/get.dart';
 
@@ -82,6 +84,11 @@ class Routes {
       name: subs,
       page: () => const SubscriberPage(),
       binding: SubscriberBinding(),
+    ),
+    GetPage(
+      name: play,
+      page: () => const PlayPage(),
+      binding: PlayBinding(),
     ),
   ];
 }
